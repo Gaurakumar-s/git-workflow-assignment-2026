@@ -1,0 +1,149 @@
+GIT COMMAND DOCUMENTATION
+Repository: https://github.com/Gaurakumar-s/git-workflow-assignment-2026
+
+Commands are listed in execution order; repeated uses are retained.
+The project folder and HTML/ignore files were created locally with Python.
+Git operations were executed on this Mac using the commands below.
+
+Preflight commands:
+git config --get user.name
+  Read the existing author name before configuring this repository.
+git config --get user.email
+  Read the existing email; public commits use a repository-local noreply address.
+
+Assignment workflow:
+01. git init -b main
+    Initialize a new local repository with main as its initial branch.
+
+02. git config user.name 'Gaurav Kumar'
+    Set the commit author name for this repository only.
+
+03. git config user.email 190478157+Gaurakumar-s@users.noreply.github.com
+    Use the GitHub noreply address for commits in this public repository.
+
+04. git add index.html about.html
+    Stage both HTML files for the first commit.
+
+05. git commit -m 'Initial commit: add home and about pages'
+    Record the initial state of the project.
+
+06. git diff -- index.html
+    Inspect the home-page change before staging it.
+
+07. git add index.html
+    Stage the updated home page.
+
+08. git commit -m 'Update home page introduction'
+    Create the second commit with the modified HTML content.
+
+09. git branch feature
+    Create the required branch named feature from the current commit.
+
+10. git switch feature
+    Switch the working branch to feature.
+
+11. git add about.html
+    Stage the learning section added on the feature branch.
+
+12. git commit -m 'Add learning section on feature branch'
+    Record the feature change on its own branch.
+
+13. git switch main
+    Return to main before merging the feature branch.
+
+14. git merge --no-ff feature -m 'Merge feature branch into main'
+    Merge feature using a merge commit so branch activity remains visible.
+
+15. git log --oneline --graph --decorate --all
+    Display commits and the branch/merge graph.
+
+16. git check-ignore -v debug.log temp/scratch.txt
+    Verify that the log file and the temp folder match the ignore rules.
+
+17. git add .gitignore
+    Stage the ignore rules without adding the ignored files.
+
+18. git commit -m 'Ignore log files and temp folder'
+    Save the .gitignore configuration.
+
+19. git add index.html
+    Stage an additional temporary change for the undo demonstration.
+
+20. git commit -m 'Add temporary announcement for undo demonstration'
+    Create the extra commit that will be undone.
+
+21. git show --stat --oneline HEAD
+    Show the additional commit before undoing it.
+
+22. git revert --no-edit HEAD
+    Undo the latest commit by creating a new inverse commit; preserve history.
+
+23. git show --format=short HEAD -- index.html
+    Show that the revert removes the temporary announcement.
+
+24. git diff --exit-code 'HEAD~2' HEAD -- index.html
+    Verify the file after reverting equals the file before the temporary commit.
+
+25. git status
+    Confirm the working tree is clean after the undo operation.
+
+26. git log --oneline --graph --decorate --all
+    Display the history including the temporary commit and its revert.
+
+27. git remote add origin https://github.com/Gaurakumar-s/git-workflow-assignment-2026.git
+    Connect the existing local repository to the new GitHub repository.
+
+28. git push -u origin main feature
+    Push main and feature and set their upstream branches.
+
+29. git add git_commands.txt
+    Stage the complete command documentation.
+
+30. git commit -m 'Document Git commands used in assignment'
+    Commit the command documentation to main.
+
+31. git push origin main feature
+    Publish the final documentation and retain both branches on GitHub.
+
+32. git remote -v
+    Display the configured origin fetch and push URLs.
+
+33. git branch -vv
+    Show local branches, their latest commits, and upstream tracking.
+
+34. git log --oneline --graph --decorate --all
+    Display the final commit history with local and remote branch labels.
+
+35. git status
+    Confirm that main is up to date with origin/main and the working tree is clean.
+
+36. git status --short --ignored
+    Show the ignored log file and temp directory with !! markers.
+
+37. git ls-files
+    List tracked files and confirm that ignored files are absent.
+
+38. git rev-parse main feature
+    Read the full local branch hashes for comparison with GitHub.
+
+39. git ls-remote --heads origin
+    Read remote branch hashes to verify that all work was pushed.
+
+40. git rev-list --count main
+    Count all commits reachable from main, including the feature commit.
+
+41. git rev-list --parents -n 1 bed69a9
+    Verify the merge commit has two parents.
+
+42. git fsck --full
+    Check the integrity of local Git objects and references.
+
+GitHub CLI commands (gh is separate from Git):
+gh auth status
+  Check the existing GitHub authentication.
+gh api user --jq '{login, id, name}'
+  Read the account identity and construct its public noreply email address.
+gh repo create Gaurakumar-s/git-workflow-assignment-2026 --public --description 'Local Git workflow assignment: commits, branching, merging, gitignore and revert'
+  Create an empty public GitHub repository after completing the local workflow.
+gh repo view Gaurakumar-s/git-workflow-assignment-2026 --json nameWithOwner,url,visibility,defaultBranchRef
+  Verify the repository URL, PUBLIC visibility, and default branch.
