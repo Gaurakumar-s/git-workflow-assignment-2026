@@ -157,3 +157,15 @@ git log --oneline --graph --decorate --all
   Display the updated repository history.
 git status
   Check the final working-tree and upstream status.
+
+Screenshot evidence commands:
+git --no-pager show --stat --oneline 2b2e59e
+  Show the initial commit and the two HTML files without opening a pager.
+git --no-pager log --oneline --graph --decorate --all
+  Display the branch and merge history directly in Terminal.
+git --no-pager show --stat --oneline 5596b54
+  Show the temporary commit used for the undo demonstration.
+git --no-pager show --stat --oneline 57de312
+  Show the revert commit and the removed line.
+git diff --exit-code b1073b5 57de312 -- index.html
+  Compare the file before the temporary change with its state after reverting.
