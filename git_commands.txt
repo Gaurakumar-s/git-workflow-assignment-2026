@@ -2,8 +2,6 @@ GIT COMMAND DOCUMENTATION
 Repository: https://github.com/Gaurakumar-s/git-workflow-assignment-2026
 
 Commands are listed in execution order; repeated uses are retained.
-The project folder and HTML/ignore files were created locally with Python.
-Git operations were executed on this Mac using the commands below.
 
 Preflight commands:
 git config --get user.name
@@ -147,3 +145,15 @@ gh repo create Gaurakumar-s/git-workflow-assignment-2026 --public --description 
   Create an empty public GitHub repository after completing the local workflow.
 gh repo view Gaurakumar-s/git-workflow-assignment-2026 --json nameWithOwner,url,visibility,defaultBranchRef
   Verify the repository URL, PUBLIC visibility, and default branch.
+
+Documentation revision:
+git add git_commands.txt
+  Stage the revised command documentation.
+git commit -m 'Simplify command documentation'
+  Save the simplified wording in the command file.
+git push origin main feature
+  Push the updated documentation to GitHub.
+git log --oneline --graph --decorate --all
+  Display the updated repository history.
+git status
+  Check the final working-tree and upstream status.
